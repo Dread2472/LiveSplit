@@ -57,8 +57,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveSplit.Plugin", "LiveSpl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveSplit.Register", "LiveSplit.Register\LiveSplit.Register.csproj", "{992F67ED-99FB-4437-B470-26DE095A61E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveSplit.WPF", "LiveSplit.WPF\LiveSplit.WPF.csproj", "{8FAB2C9C-CBA3-4C3A-8288-754002214F9A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveSplit.Text", "Components\LiveSplit.Text\LiveSplit.Text.csproj", "{BE9D4E57-20C6-4384-A3DC-AA365E11FFD2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveSplit.RunPrediction", "Components\LiveSplit.RunPrediction\LiveSplit.RunPrediction.csproj", "{78F31888-C600-4D5D-9843-13D023893490}"
@@ -188,12 +186,6 @@ Global
 		{992F67ED-99FB-4437-B470-26DE095A61E8}.Release Candidate|Any CPU.Build.0 = Release Candidate|Any CPU
 		{992F67ED-99FB-4437-B470-26DE095A61E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{992F67ED-99FB-4437-B470-26DE095A61E8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8FAB2C9C-CBA3-4C3A-8288-754002214F9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8FAB2C9C-CBA3-4C3A-8288-754002214F9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8FAB2C9C-CBA3-4C3A-8288-754002214F9A}.Release Candidate|Any CPU.ActiveCfg = Release Candidate|Any CPU
-		{8FAB2C9C-CBA3-4C3A-8288-754002214F9A}.Release Candidate|Any CPU.Build.0 = Release Candidate|Any CPU
-		{8FAB2C9C-CBA3-4C3A-8288-754002214F9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8FAB2C9C-CBA3-4C3A-8288-754002214F9A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BE9D4E57-20C6-4384-A3DC-AA365E11FFD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BE9D4E57-20C6-4384-A3DC-AA365E11FFD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE9D4E57-20C6-4384-A3DC-AA365E11FFD2}.Release Candidate|Any CPU.ActiveCfg = Release Candidate|Any CPU
