@@ -24,9 +24,9 @@
   <AutoSplitter>
     <Games>
       <Game>A Hat in Time</Game>
-      <Game>A Hat in Time: Beta</Game>
+      <Game>A Hat in Time (Beta)</Game>
       <Game>A Hat in Time Beta</Game>
-      <Game>A Hat in Time: Beta Build</Game>
+      <Game>A Hat in Time (Beta Build)</Game>
       <Game>A Hat in Time Beta Build</Game>
       <Game>AHiT</Game>
     </Games>
@@ -133,12 +133,24 @@
   <AutoSplitter>
     <Games>
       <Game>Borderlands: The Pre-Sequel!</Game>
+      <Game>Borderlands: The Pre-Sequel</Game>
     </Games>
     <URLs>
       <URL>http://abahbob.com/livesplit/LiveSplit.BLTPS.asl</URL>
     </URLs>
     <Type>Script</Type>
     <Description>Auto-reset, Start, and Load Removal. (By drMalcom)</Description>
+  </AutoSplitter>
+  <AutoSplitter>
+    <Games>
+      <Game>Sonic Adventure 2 Battle</Game>
+      <Game>SA2B</Game>
+    </Games>
+    <URLs>
+      <URL>http://abahbob.com/livesplit/LiveSplit.SA2B.asl</URL>
+    </URLs>
+    <Type>Script</Type>
+    <Description>Load Removal is available. (By ShiningFace)</Description>
   </AutoSplitter>
   <AutoSplitter>
     <Games>
@@ -239,6 +251,18 @@
     <Description>Auto Splitting is available. (By Dalet)</Description>
   </AutoSplitter>
   <AutoSplitter>
+  	<Games>
+  		<Game>Bully: Scholarship Edition</Game>
+  		<Game>Bully</Game>
+  		<Game>Canis Canem Edit</Game>
+  	</Games>
+  	<URLs>
+  		<URL>https://github.com/Dalet/LiveSplit.Bully/raw/master/Components/LiveSplit.Bully.dll</URL>
+  	</URLs>
+  	<Type>Component</Type>
+    <Description>Load Removal is available. (By Dalet)</Description>
+  </AutoSplitter>
+  <AutoSplitter>
     <Games>
       <Game>The Elder Scrolls V: Skyrim</Game>
       <Game>Skyrim</Game>
@@ -260,6 +284,31 @@
     </URLs>
     <Type>Component</Type>
     <Description>Auto Splitting and Load Removal are available. (By DrTChops)</Description>
+  </AutoSplitter>
+  <AutoSplitter>
+    <Games>
+      <Game>Fallout: New Vegas</Game>
+      <Game>Fallout New Vegas</Game>
+      <Game>Fallout: NV</Game>
+      <Game>Fallout NV</Game>
+      <Game>FONV</Game>
+    </Games>
+    <URLs>
+      <URL>https://raw.githubusercontent.com/drtchops/asl/master/newvegas.asl</URL>
+    </URLs>
+    <Type>Script</Type>
+    <Description>Load Removal is available. (By DrTChops)</Description>
+  </AutoSplitter>
+  <AutoSplitter>
+    <Games>
+      <Game>Dragon Age 2</Game>
+      <Game>DA2</Game>
+    </Games>
+    <URLs>
+      <URL>https://raw.githubusercontent.com/drtchops/asl/master/dragonage2.asl</URL>
+    </URLs>
+    <Type>Script</Type>
+    <Description>Load Removal is available. (By DrTChops)</Description>
   </AutoSplitter>
   <AutoSplitter>
     <Games>
@@ -479,5 +528,30 @@
     </URLs>
     <Type>Script</Type>
     <Description>Load Removal is available for patch 1.0. (By TheFuncannon)</Description>
+  </AutoSplitter>
+  <AutoSplitter>
+    <Games>
+      <Game>Rayman Legends</Game>
+    </Games>
+    <URLs>
+      <URL>https://dl.dropboxusercontent.com/u/283391/LiveSplit.RaymanLegends.asl</URL>
+    </URLs>
+    <Type>Script</Type>
+    <Description>Load Removal and Auto Splitting (Beta) is available. (By cooopercrisp)</Description>
+  </AutoSplitter>
+  <AutoSplitter>
+    <Games>
+      <Game>SADX</Game>
+      <Game>Sonic Adventure DX</Game>
+      <Game>Sonic Adventure DX: Director's Cut</Game>
+      <Game>Sonic Adventure DX: Directors Cut</Game>
+      <Game>Sonic Adventure DX Director's Cut</Game>
+      <Game>Sonic Adventure DX Directors Cut</Game>
+    </Games>
+    <URLs>
+      <URL>https://dl.dropboxusercontent.com/s/phb0per4f9zyecw/sadx.asl</URL>
+    </URLs>
+    <Type>Script</Type>
+    <Description>Auto Splitting (Beta-v1) is available. (By VeritasDL)</Description>
   </AutoSplitter>
 </AutoSplitters>

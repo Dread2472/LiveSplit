@@ -64,6 +64,29 @@ namespace LiveSplit.Model
             return false;
         }
 
+        private static bool tokenizeAndKeepBoth(string name, string splitToken, List<string> list)
+        {
+            if (name.Contains(splitToken))
+            {
+                var splits = name.Split(new[] { splitToken }, 2, StringSplitOptions.None);
+                var seriesTitle = splits[0];
+                var subTitle = splits[1];
+                var seriesTitleAbbreviations = seriesTitle.GetAbbreviations().ToList();
+                var subTitleAbbreviations = subTitle.GetAbbreviations().ToList();
+
+                foreach (var subTitleAbbreviation in subTitleAbbreviations)
+                {
+                    foreach (var seriesTitleAbbreviation in seriesTitleAbbreviations)
+                    {
+                        list.Add(seriesTitleAbbreviation + splitToken + subTitleAbbreviation);
+                    }
+                }
+
+                return true;
+            }
+            return false;
+        }
+
         public static IEnumerable<string> GetAbbreviations(this string name)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -84,7 +107,8 @@ namespace LiveSplit.Model
             }
             else if (tokenize(name, ": ", list)) { }
             else if (tokenize(name, " - ", list)) { }
-            else if (name.ToLower().Contains(" and "))
+            else if (tokenizeAndKeepBoth(name, " | ", list)) { }
+            else if (name.ToLowerInvariant().Contains(" and "))
             {
                 var index = name.ToLower().IndexOf(" and ");
                 var firstPart = name.Substring(0, index);
@@ -94,12 +118,12 @@ namespace LiveSplit.Model
             }
             else
             {
-                if (name.ToLower().StartsWith("the "))
+                if (name.ToLowerInvariant().StartsWith("the "))
                 {
                     var theDropped = name.Substring("the ".Length);
                     list.Add(theDropped);
                 }
-                else if (name.ToLower().StartsWith("a "))
+                else if (name.ToLowerInvariant().StartsWith("a "))
                 {
                     var aDropped = name.Substring("a ".Length);
                     list.Add(aDropped);

@@ -160,10 +160,10 @@ namespace LiveSplit.View
                 {
                     run = LoadRunFromFile(splitsPath, true);
                 }
-                else
+                else if (Settings.RecentSplits.Count > 0 
+                    && !string.IsNullOrEmpty(Settings.RecentSplits.Last()))
                 {
-                    if (Settings.RecentSplits.Count > 0)
-                        run = LoadRunFromFile(Settings.RecentSplits.Last(), true);
+                    run = LoadRunFromFile(Settings.RecentSplits.Last(), true);
                 }
             }
             catch (Exception e)
@@ -210,7 +210,7 @@ namespace LiveSplit.View
 
             CurrentState.CurrentTimingMethod = Settings.LastTimingMethod;
 
-            RegenerateComparisons();
+            SwitchComparisonGenerators();
             SwitchComparison(Settings.LastComparison);
             Model.CurrentState = CurrentState;
 
@@ -748,11 +748,10 @@ namespace LiveSplit.View
                 var runImporter = new SpeedrunComRunImporter();
                 var run = runImporter.Import(this);
 
-                if (!WarnUserAboutSplitsSave())
-                    return;
-
                 if (run != null)
                 {
+                    if (!WarnUserAboutSplitsSave())
+                        return;
                     if (InTimerOnlyMode)
                         RemoveTimerOnly();
                     run.HasChanged = true;
@@ -870,11 +869,10 @@ namespace LiveSplit.View
             var runImporter = new URLRunImporter();
             var run = runImporter.Import(this);
 
-            if (!WarnUserAboutSplitsSave())
-                return;
-
             if (run != null)
             {
+                if (!WarnUserAboutSplitsSave())
+                    return;
                 if (InTimerOnlyMode)
                     RemoveTimerOnly();
                 run.HasChanged = true;
@@ -1075,8 +1073,11 @@ namespace LiveSplit.View
             }
             catch (Exception ex)
             {
-                Log.Error(ex);
-                Invalidate();
+                if (!(this.IsDisposed && ex is ObjectDisposedException))
+                {
+                    Log.Error(ex);
+                    Invalidate();
+                }
             }
         }
 
@@ -1506,7 +1507,6 @@ namespace LiveSplit.View
 
             if (addToRecent)
                 AddFileToLRU(filePath);
-            RegenerateComparisons();
             if (InTimerOnlyMode)
                 RemoveTimerOnly();
             return run;
@@ -2165,8 +2165,10 @@ namespace LiveSplit.View
                     var regenerate = Settings.SimpleSumOfBest != oldSettings.SimpleSumOfBest;
                     CurrentState.Settings = Settings = oldSettings;
                     if (regenerate)
-                        RegenerateComparisons();                    
+                        RegenerateComparisons();
                 }
+                else
+                    SwitchComparisonGenerators();
                 Settings.RegisterHotkeys(Hook);
             }
             finally
@@ -2406,7 +2408,8 @@ namespace LiveSplit.View
             foreach (var customComparison in CurrentState.Run.CustomComparisons)
                 AddActionToComparisonsMenu(customComparison);
             
-            comparisonMenuItem.DropDownItems.Add(new ToolStripSeparator());
+            if (CurrentState.Run.ComparisonGenerators.Count > 0)
+                comparisonMenuItem.DropDownItems.Add(new ToolStripSeparator());
 
             var raceSeparatorAdded = false;
             foreach (var generator in CurrentState.Run.ComparisonGenerators)
@@ -2453,6 +2456,19 @@ namespace LiveSplit.View
                 foreach (var generator in CurrentState.Run.ComparisonGenerators)
                     generator.Generate(CurrentState.Settings);
             }
+        }
+
+        private void SwitchComparisonGenerators()
+        {
+            var allGenerators = new StandardComparisonGeneratorsFactory().GetAllGenerators(CurrentState.Run);
+            foreach (var generator in Settings.ComparisonGeneratorStates.Reverse())
+            {
+                if (CurrentState.Run.ComparisonGenerators.Any(x => x.Name == generator.Key))
+                    CurrentState.Run.ComparisonGenerators.Remove(CurrentState.Run.ComparisonGenerators.First(x => x.Name == generator.Key));
+                if (generator.Value == true)
+                    CurrentState.Run.ComparisonGenerators.Insert(0, allGenerators.First(x => x.Name == generator.Key));
+            }
+            RegenerateComparisons();
         }
 
         private void SwitchComparison(string name)
